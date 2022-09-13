@@ -4,7 +4,7 @@
             "name": "Win32",
             "includePath": [
                 "${workspaceFolder}/**",
-                "D:\\icu4c-71_1-src\\icu\\source\\icu-installation\\include\\**"
+                "D:\\Code Projects\\cpp-libraries\\icu4c-v71.1-x86_64-posix-seh-rev0-8.1.0\\include\\**"
             ],
             "defines": [
                 "_DEBUG",
