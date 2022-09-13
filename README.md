@@ -8,5 +8,8 @@ icu4c-playground
 ### TODOs
 - [ ] Study `NumberPatterns4` in [ICU Demonstration - Locale Explorer](https://icu4c-demos.unicode.org/icu-bin/locexp?d_=en&_=zh_Hant_HK)
 
+### Using
+- [dirkarnez/icu4c-prebuilt](https://github.com/dirkarnez/icu4c-prebuilt)
+
 ### Documentation
 - https://www.unicodeconference.org/presentations-43/TS1T3-Loomis-Carr.pdf
