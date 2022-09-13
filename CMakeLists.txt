@@ -1,10 +1,10 @@
-cmake_minimum_required(VERSION 3.14)
+cmake_minimum_required(VERSION 3.23)
 
 ### C++11
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DU_STATIC_IMPLEMENTATION -DWINVER=0x0601 -D_WIN32_WINNT=0x0601")
+# set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DU_STATIC_IMPLEMENTATION -DWINVER=0x0601")
 
 project("icu4c-playground")
 
@@ -72,8 +72,6 @@ target_include_directories(sicudt INTERFACE "${ICU_ROOT}/include")
 
 
 
-
-
 add_library(sicuin STATIC IMPORTED)
 
 set_property(
@@ -92,7 +90,6 @@ set_target_properties(sicuin PROPERTIES
 
 target_include_directories(sicuin INTERFACE "${ICU_ROOT}/include")
 
-
 SET(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -static")
 
 add_executable(${PROJECT_NAME}
@@ -100,4 +97,3 @@ add_executable(${PROJECT_NAME}
 )
 
 target_link_libraries(${PROJECT_NAME} sicuio sicuin sicuuc sicudt)
-

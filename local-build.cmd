@@ -10,15 +10,15 @@ cd /d %~dp0
 @REM %DOWNLOAD_DIR%\x86_64-8.1.0-release-win32-seh-rt_v6-rev0\bin;^
 @REM %DOWNLOAD_DIR%\cmake-3.22.2-windows-x86_64\bin;
 
-set ICU_ROOT=D:\icu4c-71_1-src\icu\source\icu-installation
-
 set PATH=^
 D:\Softwares\x86_64-8.1.0-release-posix-seh-rt_v6-rev0\mingw64;^
 D:\Softwares\x86_64-8.1.0-release-posix-seh-rt_v6-rev0\mingw64\bin;^
 D:\Softwares\cmake-3.23.0-rc1-windows-x86_64\bin;
 
+@REM -DICU_ROOT="D:/Code Projects/icu4c-playground/icu-installation" ^
+
 cmake.exe -G"MinGW Makefiles" ^
--DICU_ROOT="D:/icu4c-71_1-src/icu/source/icu-installation" ^
+-DICU_ROOT="D:/Code Projects/cpp-libraries/icu4c-v71.1-x86_64-posix-seh-rev0-8.1.0" ^
 -DCMAKE_BUILD_TYPE=Release ^
 -B./build &&^
 cd build &&^
