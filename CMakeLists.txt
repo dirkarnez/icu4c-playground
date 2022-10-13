@@ -4,7 +4,7 @@ cmake_minimum_required(VERSION 3.23)
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DU_STATIC_IMPLEMENTATION -DWINVER=0x0601")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DU_STATIC_IMPLEMENTATION")
 
 project("icu4c-playground")
 
@@ -51,23 +51,45 @@ target_include_directories(sicuuc INTERFACE "${ICU_ROOT}/include")
 
 
 
-add_library(sicudt STATIC IMPORTED)
+# add_library(sicudt STATIC IMPORTED)
+
+# set_property(
+#   TARGET sicudt APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE
+# )
+
+# set_target_properties(sicudt PROPERTIES
+#   IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
+#   IMPORTED_LOCATION_RELEASE "${ICU_ROOT}/lib/libsicudt.a"
+# )
+  
+
+# set_target_properties(sicudt PROPERTIES
+#   MAP_IMPORTED_CONFIG_MINSIZEREL Release
+#   MAP_IMPORTED_CONFIG_RELWITHDEBINFO Release
+# )
+
+# target_include_directories(sicudt INTERFACE "${ICU_ROOT}/include")
+
+
+add_library(icudt STATIC IMPORTED)
 
 set_property(
-  TARGET sicudt APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE
+  TARGET icudt APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE
 )
 
-set_target_properties(sicudt PROPERTIES
+set_target_properties(icudt PROPERTIES
   IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "${ICU_ROOT}/lib/libsicudt.a"
+  IMPORTED_LOCATION_RELEASE "${ICU_ROOT}/bin/libicudt.a"
 )
   
-set_target_properties(sicudt PROPERTIES
+
+set_target_properties(icudt PROPERTIES
   MAP_IMPORTED_CONFIG_MINSIZEREL Release
   MAP_IMPORTED_CONFIG_RELWITHDEBINFO Release
 )
 
-target_include_directories(sicudt INTERFACE "${ICU_ROOT}/include")
+target_include_directories(icudt INTERFACE "${ICU_ROOT}/include")
+
 
 
 
@@ -96,4 +118,4 @@ add_executable(${PROJECT_NAME}
     "src/main.cpp"
 )
 
-target_link_libraries(${PROJECT_NAME} sicuio sicuin sicuuc sicudt)
+target_link_libraries(${PROJECT_NAME} sicuio sicuin sicuuc icudt)
